@@ -1,27 +1,61 @@
-def call(String repoUrl){
-pipeline {
-       agent any
-       tools {
-           maven 'maven'
-       }
-       stages {
-           stage("Tools initialization") {
-               steps {
-                   sh 'mvn --version'
-                   sh 'java -version'
-               }
-           }
-           stage("Checkout Code") {
-               steps {
-                   git branch: 'main',
-                          url: "${repoUrl}"
-               }
-           }
-           stage("to-test-maven") {
-               steps {
-                   sh 'mvn -v'
-               }
-           }
-       }
-}
+ pipeline {
+    agent {
+        label{
+            label 'jenkins-slave1'
+        }
+    }
+    stages {
+    stage('version-control'){
+      steps{
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Pw', url: 'https://github.com/Team3-Group3-Pipeline/Distributed-Jenkins.git']]])
+      }
+    }
+        stage('git-clone.Lucky'){
+            parallel{
+                stage('parallel-1'){
+                    steps{
+                        sh 'lscpu'
+                    }
+                }
+                stage('memory.Lucky'){
+                    steps{
+                        sh'free -m'
+                    }
+                }
+            }
+        }
+        stage('systemcheck'){
+            parallel{
+                stage('free-memory'){
+                    steps{
+                        sh'free -g'
+                    }
+                }
+                stage('system-stat1'){
+                    steps{
+                        sh'lscpu'
+                    }
+                }
+            }
+        }
+        stage('uptime'){
+            parallel{
+                stage('runtime'){
+                    agent {
+                      label{
+                      label 'jenkins-slave2'
+                      }
+                   }
+                    steps{
+                        sh 'uptime'
+                    }
+                }
+                stage('system-stat2'){
+                    steps{
+                        sh 'lsblk'
+                    }
+                }
+            }
+        }
+    }
 }
