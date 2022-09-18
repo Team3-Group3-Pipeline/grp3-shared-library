@@ -1,4 +1,5 @@
- pipeline {
+def call(String repo Url){
+	 pipeline {
     agent {
         label{
             label 'jenkins-slave1'
@@ -58,4 +59,6 @@
             }
         }
     }
+}
+
 }
