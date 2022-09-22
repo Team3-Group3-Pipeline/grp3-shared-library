@@ -56,6 +56,12 @@ def call(String repoUrl){
                         sh 'lsblk'
                     }
                 }
+                                }
+                stage('Benbruno'){
+                    steps{
+                        sh 'df -h | grep ^/dev'
+                    }
+                }
             }
         }
     }
