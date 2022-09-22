@@ -51,7 +51,7 @@ def call(String repoUrl){
                         sh 'uptime'
                     }
                 }
-                stage('system-stat2'){
+                stage('Bola_Ajayi'){
                     steps{
                         sh 'lsblk'
                     }
