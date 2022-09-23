@@ -13,12 +13,12 @@ def call(String repoUrl){
     }
         stage('git-clone.Lucky'){
             parallel{
-                stage('BolaAjayi'){
+                stage('Sys-Stat'){
                     steps{
                         sh 'lscpu'
                     }
                 }
-                stage('memory.Lucky'){
+                stage('free-memory-in-M'){
                     steps{
                         sh'free -m'
                     }
