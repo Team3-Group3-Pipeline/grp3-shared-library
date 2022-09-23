@@ -25,7 +25,7 @@ def call(String repoUrl){
                 }
             }
         }
-        stage('systemcheck'){
+        stage('systemcheck-Bola'){
             parallel{
                 stage('free-memory'){
                     steps{
@@ -51,7 +51,7 @@ def call(String repoUrl){
                         sh 'uptime'
                     }
                 }
-                stage('Bola-Ajayi'){
+                stage('Blok-devices'){
                     steps{
                         sh 'lsblk'
                     }
