@@ -66,5 +66,3 @@ def call(String repoUrl){
         }
     }
 }
-
-}
