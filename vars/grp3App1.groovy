@@ -8,7 +8,7 @@ def call(String repoUrl){
     stages {
     stage('version-control'){
       steps{
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Pw', url: 'https://github.com/Team3-Group3-Pipeline/grp3-shared-library.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Pw', url: 'https://github.com/Team3-Group3-Pipeline/Distributed-Jenkins.git']]])
       }
     }
         stage('git-clone.Lucky'){
@@ -39,9 +39,9 @@ def call(String repoUrl){
                 }
             }
         }
-        stage('uptime'){
+        stage('BenBruno-Time'){
             parallel{
-                stage('runtime'){
+                stage('Bruno-runtime'){
                     agent {
                       label{
                       label 'jenkins-slave2'
@@ -51,15 +51,9 @@ def call(String repoUrl){
                         sh 'uptime'
                     }
                 }
-                stage('Bola_Ajayi'){
+                stage('Bola-Ajayi'){
                     steps{
                         sh 'lsblk'
-                    }
-                }
-                                }
-                stage('Benbruno'){
-                    steps{
-                        sh 'df -h | grep ^/dev'
                     }
                 }
             }
