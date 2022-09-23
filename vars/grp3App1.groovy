@@ -13,7 +13,7 @@ def call(String repoUrl){
     }
         stage('git-clone.Lucky'){
             parallel{
-                stage('parallel-1'){
+                stage('BolaAjayi'){
                     steps{
                         sh 'lscpu'
                     }
@@ -25,7 +25,7 @@ def call(String repoUrl){
                 }
             }
         }
-        stage('systemcheck-Bola'){
+        stage('syscheck-BolaAjayi'){
             parallel{
                 stage('free-memory'){
                     steps{
